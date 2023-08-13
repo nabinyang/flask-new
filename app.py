@@ -6,13 +6,14 @@ app = Flask(__name__)
 def index():
     return render_template('./index.html')
 
-@app.route('/get', methods=['GET'])
-def get():
-    return jsonify({"data": data, "status": HTTPStatus.OK})
-
 @app.route('/post', methods=['POST'])
 def post():
     params = request.get_json()
-    print(params)
-
-    return jsonify({"data": params, "status": HTTPStatus.OK})
+    print(params['id'])
+    print(params['nickname'])
+    print(params['email'])
+    print(params['gender'])
+    print(params['nickname'])
+    print(params['ageRange'])
+    
+    return jsonify({"data": params})
