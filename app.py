@@ -2,7 +2,14 @@ from flask import jsonify, Flask, request, render_template
 
 app = Flask(__name__)
 
-@app.route("/", methods=['POST', 'GET'])
+@app.route("/")
 def index():
-    params = request.get_json()
-    return render_template('./index.html', params = params)
+
+@app.route('/echo_call/<param>') #get echo api
+def get_echo_call(param):
+    return jsonify({"param": param})
+
+@app.route('/echo_call', methods=['POST']) #post echo api
+def post_echo_call():
+    param = request.get_json()
+    return jsonify(param)
