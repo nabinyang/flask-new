@@ -5,11 +5,13 @@ app = Flask(__name__)
 @app.route("/")
 def index():
 
-@app.route('/echo_call/<param>') #get echo api
-def get_echo_call(param):
-    return jsonify({"param": param})
+@app.route('/get', methods=['GET'])
+def get():
+    return jsonify({"data": data, "status": HTTPStatus.OK})
 
-@app.route('/echo_call', methods=['POST']) #post echo api
-def post_echo_call():
-    param = request.get_json()
-    return jsonify(param)
+@app.route('/post', methods=['POST'])
+def post():
+    params = request.get_json()
+    print(params)
+
+    return jsonify({"data": params, "status": HTTPStatus.OK})
